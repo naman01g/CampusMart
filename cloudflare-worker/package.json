@@ -1,0 +1,27 @@
+{
+  "name": "campusmart-notifications",
+  "version": "1.0.0",
+  "description": "CampusMart push notification worker for FCM HTTP v1",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "cloudflare",
+    "worker",
+    "fcm",
+    "notifications"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240821.1",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "jose": "^5.6.3"
+  }
+}

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>CampusMart - Casio FX-991EX ClassWiz</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#c8c6c5",
+                        "tertiary-container": "#00261a",
+                        "secondary": "#8b5000",
+                        "surface-tint": "#5f5e5e",
+                        "surface": "#fbf9f9",
+                        "surface-container-highest": "#e3e2e2",
+                        "surface-container-low": "#f5f3f3",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "surface-container": "#efeded",
+                        "on-tertiary-container": "#5b937b",
+                        "on-error": "#ffffff",
+                        "tertiary": "#000b06",
+                        "on-tertiary-fixed": "#002115",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#444748",
+                        "outline": "#747878",
+                        "outline-variant": "#DEDDD8",
+                        "surface-variant": "#e3e2e2",
+                        "on-primary-container": "#898787",
+                        "secondary-container": "#fea542",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-primary-fixed-variant": "#474746",
+                        "secondary-fixed": "#ffdcbe",
+                        "on-secondary-container": "#6d3e00",
+                        "on-tertiary-fixed-variant": "#16503c",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#303031",
+                        "background": "#fbf9f9",
+                        "on-primary-fixed": "#1b1c1c",
+                        "surface-container-lowest": "#FFFEFA",
+                        "primary-fixed": "#e5e2e1",
+                        "surface-bright": "#fbf9f9",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#2c1600",
+                        "on-background": "#1b1c1c",
+                        "secondary-fixed-dim": "#ffb870",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#b5efd4",
+                        "tertiary-fixed-dim": "#99d3b8",
+                        "on-secondary-fixed-variant": "#693c00",
+                        "surface-dim": "#dbdad9",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e9e8e7",
+                        "primary": "#080808",
+                        "primary-container": "#202020",
+                        "error": "#ba1a1a",
+                        "ochre": "#E38F2D",
+                        "charcoal": "#202020",
+                        "warm-cream": "#F6F4EF",
+                        "surface-white": "#FFFEFA"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem",
+                        "card": "4px",
+                        "btn": "4px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "container-max": "1280px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "xl": "48px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "gutter": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "title-lg": ["Hanken Grotesk"],
+                        "label-price": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", {"lineHeight": "34px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "title-lg": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-price": ["18px", {"lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: theme('colors.warm-cream'); }
+        /* Functional Scholasticism specific utilities */
+        .card-surface {
+            background-color: theme('colors.surface-white');
+            border: 1px solid theme('colors.outline-variant');
+            border-radius: theme('borderRadius.card');
+        }
+        .btn-primary {
+            background-color: theme('colors.charcoal');
+            color: theme('colors.on-primary');
+            border-radius: theme('borderRadius.btn');
+        }
+        .btn-action {
+            background-color: theme('colors.ochre');
+            color: theme('colors.on-primary');
+            border-radius: theme('borderRadius.btn');
+        }
+        .btn-ghost {
+            background-color: transparent;
+            border: 1px solid theme('colors.outline');
+            color: theme('colors.on-surface-variant');
+            border-radius: theme('borderRadius.btn');
+        }
+        .chip {
+            background-color: theme('colors.warm-cream');
+            color: theme('colors.charcoal');
+            border-radius: theme('borderRadius.card');
+            border: 1px solid theme('colors.outline-variant');
+        }
+        .text-truncate-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-md text-on-surface antialiased flex flex-col min-h-screen">
+<!-- Top Navigation (Transactional/Task-focused -> Minimal Header, suppressing BottomNav) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-md h-16 bg-surface-white border-b border-outline-variant">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors" onclick="history.back()">
+<span class="material-symbols-outlined text-on-surface" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex gap-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface" data-icon="share">share</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-16 pb-[120px] md:pb-xl px-md md:px-gutter max-w-container-max mx-auto w-full pt-md">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg md:gap-xl">
+<!-- Left Column: Image Gallery (Mobile: Top) -->
+<div class="md:col-span-7 flex flex-col gap-sm">
+<div class="w-full aspect-square bg-surface-container-lowest border border-outline-variant rounded-card overflow-hidden relative group">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A clean, modern overhead shot of a Casio FX-991EX ClassWiz scientific calculator resting on a bright white textured paper background. The lighting is bright and even, highlighting the sleek black body and high-resolution screen. The setting is minimal, evoking a studious, modern aesthetic consistent with functional scholasticism. High contrast between the dark calculator and the pristine white surface." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAQ2Y7kLXyAZXaxkMNWCRuJZz1mNfn9nWyCUBUbFYgDB_56uLi3NKsQSDxF-9Z7yb37Fzzw8GYG2GkWOAt8XQEF0DUZddhLfpKkiAPVhxNRxPpFPgykPJDjdXraDxffe_fULHPBs8nazAxkPJIrmj1jAFA5IFEmO-ikLbPnTQhQS7CNxlSMpOc_emxzvlRWLMcoudgtV9nQok1zQ6ezT-jt73yH5IcH0SYPzdSjj0D2Bq0ZPVc7tfk')"></div>
+<div class="absolute bottom-sm right-sm bg-surface-white/90 backdrop-blur-sm px-sm py-xs border border-outline-variant rounded-card font-label-sm text-label-sm text-on-surface">1/4</div>
+</div>
+<!-- Thumbnail Strip -->
+<div class="grid grid-cols-4 gap-sm">
+<div class="aspect-square bg-surface-container-lowest border border-charcoal rounded-card overflow-hidden cursor-pointer">
+<div class="w-full h-full bg-cover bg-center" data-alt="Close up shot of the keys on a Casio FX-991EX ClassWiz calculator, showing the detailed print on the buttons. Bright, modern lighting, clean white background, functional scholastic aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBdXEhXL2zY_PSXqyfS33pK8u89xeivxwvk6ccm3HDFblDiOMz9gT09V9EJ1iX9gTnyMlJCHJqHfXjmXkNyFN6ySmBWNUMI_tAw6-EnEpawBbPU8I_0AJTbyPXyD8Y6UwOWirYcgF_IAc47G7SVWIbBNiGhe-KRiyuEasufKuQd2miXFAg_DwwZjQ8xrF93f4wGGCsSrTlH9snLCLShxUXyUARBeSbAyFxd2_xxTDw2zaoSwOTOL4A')"></div>
+</div>
+<div class="aspect-square bg-surface-container-lowest border border-outline-variant rounded-card overflow-hidden cursor-pointer hover:border-outline transition-colors">
+<div class="w-full h-full bg-cover bg-center" data-alt="Close up of the screen of a Casio FX-991EX ClassWiz calculator displaying a complex equation. Bright, clean white background, modern lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuATFhmVgPZU2ZdmFk2hE26_1ZnPUJCkWz3h5zO1w0PnvTj7qTI6npFpRgAvZdeT1SoP8bZDBw-Y9LHW08RXXndUWrl5DgcGrly5W5ma-TSacyf7HJxKfrmy3kNV6ytpXkE7u7luP1rRyAURzh1uEuDJzTNkGB8dG7tPeMWGQh5oXFom8oNv0a0uZA8utvLbR4fSM4YPx2bHSwatRQSwh2GrpJjfFX-8ahQ_KesJO6Nbr3pqw6UkHSo')"></div>
+</div>
+<div class="aspect-square bg-surface-container-lowest border border-outline-variant rounded-card overflow-hidden cursor-pointer hover:border-outline transition-colors">
+<div class="w-full h-full bg-cover bg-center" data-alt="Side profile shot of a Casio FX-991EX ClassWiz calculator showing its slim profile. Resting on a white surface, modern bright lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBAyW7IEernR29rtfj4rY4QxXNVfIZO4Gn-wu-Zn8ZW6Rlh-jr4yas8BGrWQlqZpAtQxxV-CW_zNTQvC6ynf4Sq83M-hqD004Lz1T5SpTQjALUlubQibOg8EJ9Ygeub5ev8GZ6l9_PPabp0PYXyvwP8XIcXmm2v9EuhRJ8ucSjSxqiL-tKCBQIq9BYG7ts7vLhwDg3s4wx5PLn2X98Cr2nFAdgD_Yencwv2QA7HhYA6vmqeYlz058A')"></div>
+</div>
+<div class="aspect-square bg-surface-container-lowest border border-outline-variant rounded-card overflow-hidden cursor-pointer hover:border-outline transition-colors">
+<div class="w-full h-full bg-cover bg-center" data-alt="The back cover of a Casio FX-991EX ClassWiz calculator with the slide-on case attached. Placed on a pristine white desk, bright even lighting, minimalist functional style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBH5kyBm5qT6FnwSS19gbr5Dhe-ztBhWW_ALbXMSwfY6MFpuDTRCBDnpCndnciweE-LCp_s31wxDCrjAqHyxfY1D7SBtH8uYTGA-3kdN01IFIVrBOfuDLNQTjLWLXbGnV0OhO-PBLNuTRfrxbIRiXzF5aq887B2skBcmgg8-L2YabdPl_dAUspUScXro5uE_Ic0hKwlbDlMXsay8PUBGvTnoUe_QLMw5X-jaMWkozyDOFs3kQFsEPU')"></div>
+</div>
+</div>
+</div>
+<!-- Right Column: Details & Actions (Mobile: Bottom) -->
+<div class="md:col-span-5 flex flex-col gap-lg">
+<!-- Title & Price Block -->
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-start">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">Casio FX-991EX ClassWiz</h1>
+<button class="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full border border-outline-variant bg-surface-white hover:border-charcoal transition-colors ml-sm">
+<span class="material-symbols-outlined text-on-surface" data-icon="favorite_border">favorite_border</span>
+</button>
+</div>
+<p class="font-label-price text-label-price text-primary">₹850</p>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="schedule">schedule</span> Posted 2 hours ago
+                    </p>
+</div>
+<!-- Chips / Quick Specs -->
+<div class="flex flex-wrap gap-sm">
+<div class="chip px-sm py-xs font-label-sm text-label-sm">Electronics</div>
+<div class="chip px-sm py-xs font-label-sm text-label-sm">Like New</div>
+<div class="chip px-sm py-xs font-label-sm text-label-sm">Negotiable</div>
+</div>
+<hr class="border-outline-variant"/>
+<!-- Description Block -->
+<div class="flex flex-col gap-sm">
+<h2 class="font-title-lg text-title-lg text-on-surface">Description</h2>
+<p class="font-body-md text-body-md text-on-surface">Used for 1 semester for Engineering Math. In pristine condition, no scratches on screen or body. Comes with original slide-on hard case. Selling because I upgraded to a graphing calculator.</p>
+</div>
+<!-- Meetup Location -->
+<div class="card-surface p-md flex gap-md items-center">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface" data-icon="location_on">location_on</span>
+</div>
+<div class="flex-1">
+<h3 class="font-title-lg text-title-lg text-on-surface">Meetup Location</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">North Campus Library</p>
+</div>
+</div>
+<!-- Seller Block -->
+<div class="card-surface p-md flex flex-col gap-md">
+<h2 class="font-title-lg text-title-lg text-on-surface">Seller Information</h2>
+<div class="flex items-center gap-md">
+<div class="w-16 h-16 rounded-full border border-outline-variant overflow-hidden bg-surface-container-highest flex-shrink-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="A professional headshot of a young male student, Arjun Sharma, smiling confidently. Bright, modern lighting, clear background, evoking a trustworthy community feel consistent with functional scholasticism." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD99FUdrupC8Xny1_XzpiL6TVYsDVWPxcGL6GyJ3c8kcitEEsCY5D-BaUBpUZ2aBgjqzoCTzFZVJHmSpuq-KuiADqXahCLSd0Xkm3UVSdf7B99duvZ8BOQJBeBWkO94UMma_s1_3HCZfGEQZAIBTVoW9RG9W8L9I0dzmcPoX9dW4qfhDGDgNaPLwYhCajEvQRM01AWHMrqcTxvh4QXe-Fw-ZY82JRW1GUcK2Lc49ST5BYc-29cpARU')"></div>
+</div>
+<div class="flex-1 flex flex-col justify-center">
+<div class="flex items-center gap-xs">
+<span class="font-title-lg text-title-lg text-on-surface leading-none">Arjun Sharma</span>
+<span class="material-symbols-outlined text-on-tertiary-container text-[18px]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant leading-snug mt-xs">B.Tech Mechanical, 3rd Year</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-sm"><span class="font-bold text-on-surface">12</span> Items Sold</p>
+</div>
+<button class="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-full border border-outline-variant bg-surface-white hover:border-charcoal transition-colors ml-auto">
+<span class="material-symbols-outlined text-on-surface" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Quick Actions Block (Desktop placement) -->
+<div class="hidden md:flex flex-col gap-sm">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant">Quick Actions</h3>
+<button class="btn-ghost w-full py-sm px-md flex items-center justify-between hover:border-charcoal transition-colors">
+<span class="font-body-md text-body-md text-on-surface">Hi, is this still available?</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Bottom Action Bar (Mobile & Desktop) -->
+<div class="fixed bottom-0 w-full z-50 bg-surface-white border-t border-outline-variant p-md flex flex-col md:flex-row gap-sm pb-safe md:px-gutter lg:justify-center">
+<!-- Quick Action (Mobile only in sticky bar to save space above) -->
+<div class="md:hidden w-full max-w-container-max mx-auto mb-sm">
+<button class="btn-ghost w-full py-xs px-md flex items-center justify-between hover:border-charcoal transition-colors text-left">
+<span class="font-body-md text-body-md text-on-surface-variant truncate">Hi, is this still available?</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="send">send</span>
+</button>
+</div>
+<div class="flex gap-sm w-full max-w-container-max mx-auto lg:max-w-md">
+<button class="btn-ghost flex-1 h-12 flex items-center justify-center gap-xs font-title-lg text-title-lg hover:border-charcoal hover:text-charcoal transition-colors">
+<span class="material-symbols-outlined" data-icon="bookmark_border">bookmark_border</span>
+<span>Save</span>
+</button>
+<button class="btn-action flex-1 h-12 flex items-center justify-center gap-xs font-title-lg text-title-lg hover:bg-[#c97c25] transition-colors">
+<span class="material-symbols-outlined" data-icon="chat">chat</span>
+<span>Contact Seller</span>
+</button>
+</div>
+</div>
+</body></html>

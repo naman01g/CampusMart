@@ -1,0 +1,64 @@
+name: campusmart_mobile
+description: "CampusMart - College Student Marketplace"
+publish_to: 'none'
+
+version: 1.1.0+2
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # State Management
+  flutter_riverpod: ^3.1.0
+  riverpod_annotation: ^4.0.0
+  state_notifier: ^1.0.0
+
+  # Firebase
+  firebase_core: ^4.13.0
+  firebase_auth: ^6.5.7
+  cloud_firestore: ^6.8.0
+  firebase_messaging: ^16.5.0
+
+  # UI & Navigation
+  go_router: ^17.5.0
+
+  # Utils
+  intl: ^0.20.2
+  image_picker: ^1.0.7
+  cached_network_image: ^3.3.1
+  shimmer: ^4.0.0
+  share_plus: ^13.3.0
+  http: ^1.5.0
+  crypto: ^3.0.6
+  flutter_local_notifications: ^19.3.0
+  permission_handler: ^13.0.1
+  package_info_plus: ^10.2.1
+  url_launcher: ^6.3.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+  riverpod_generator: ^4.0.0+1
+  build_runner: ^2.4.7
+  custom_lint: ^0.8.1
+  riverpod_lint: ^3.1.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/logo.png
+    - assets/full logo.png
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/logo.png"
+  min_sdk_android: 21

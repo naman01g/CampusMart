@@ -1,0 +1,93 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+*.local
+
+# Environment files
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Testing
+coverage/
+
+# Firebase
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+
+# Flutter
+.dart_tool/
+.packages
+.pub-cache/
+build/
+*.dart_tool/package_config.json
+
+# Android
+mobile/android/app/build/
+mobile/android/.gradle/
+mobile/android/local.properties
+mobile/android/gradle.properties
+mobile/android/captures/
+
+# iOS
+mobile/ios/Pods/
+mobile/ios/.symlinks/
+mobile/ios/Flutter/Flutter.framework
+mobile/ios/Flutter/Generated.xcconfig
+mobile/ios/Flutter/Flutter.podspec
+mobile/ios/Runner/GeneratedPluginRegistrant.*
+
+# macOS
+mobile/macos/Flutter/GeneratedPluginRegistrant.*
+
+# Linux
+mobile/linux/flutter/ephemeral/
+mobile/linux/flutter/generated/
+
+# Windows
+mobile/windows/flutter/ephemeral/
+mobile/windows/flutter/generated/
+mobile/windows/runner/Release/
+mobile/windows/runner/Debug/
+mobile/windows/runner/Profile/
+
+# Web
+web/dist/
+web/.vite/
+
+# Functions
+functions/lib/
+functions/node_modules/
+functions/.runtimeconfig.json
+
+# Misc
+*.pem
+.vercel
+.netlify

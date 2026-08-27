@@ -1,0 +1,58 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+        firestore.get(/databases/(default)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    function isImage() {
+      return request.resource.contentType.matches('image/.*');
+    }
+    
+    function isUnderSize(maxSizeMB) {
+      return request.resource.size < maxSizeMB * 1024 * 1024;
+    }
+
+    // Product images - organized by user
+    match /products/{userId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && 
+        isOwner(userId) && 
+        isImage() && 
+        isUnderSize(5);
+      allow delete: if isAuthenticated() && (isOwner(userId) || isAdmin());
+    }
+
+    // User avatars
+    match /avatars/{userId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && 
+        isOwner(userId) && 
+        isImage() && 
+        isUnderSize(2);
+      allow delete: if isAuthenticated() && (isOwner(userId) || isAdmin());
+    }
+
+    // Chat attachments (future)
+    match /chat-attachments/{chatId}/{allPaths=**} {
+      allow read: if isAuthenticated() && 
+        (request.auth.uid == firestore.get(/databases/(default)/documents/chats/$(chatId)).data.buyerId ||
+         request.auth.uid == firestore.get(/databases/(default)/documents/chats/$(chatId)).data.sellerId);
+      allow write: if isAuthenticated() && 
+        (request.auth.uid == firestore.get(/databases/(default)/documents/chats/$(chatId)).data.buyerId ||
+         request.auth.uid == firestore.get(/databases/(default)/documents/chats/$(chatId)).data.sellerId) &&
+        isImage() && 
+        isUnderSize(5);
+    }
+  }
+}

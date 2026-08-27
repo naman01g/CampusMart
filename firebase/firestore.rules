@@ -1,0 +1,380 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ============================================================
+    // Helper functions
+    // ============================================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    function isVerifiedStudent() {
+      // Firebase Auth's email_verified claim is the security authority.
+      // users/{uid}.isVerified is informational only.
+      return isAuthenticated() &&
+        request.auth.token.email_verified == true;
+    }
+
+    function isAKGECEmail(email) {
+      return email.matches('(?i).*@akgec\\.ac\\.in$');
+    }
+
+    function isViewsOnlyIncrement() {
+      return request.resource.data
+          .diff(resource.data)
+          .affectedKeys()
+          .hasOnly(['views']) &&
+        request.resource.data.views is number &&
+        (
+          // Field absent: increment(1) creates it at exactly 1.
+          (!('views' in resource.data) && request.resource.data.views == 1) ||
+          // Field present: increment(1) must produce exactly old + 1.
+          (('views' in resource.data) &&
+            request.resource.data.views == resource.data.views + 1)
+        );
+    }
+
+    // ============================================================
+    // Protected user fields
+    // ============================================================
+
+    function protectedUserFields() {
+      return [
+        'uid',
+        'email',
+        'isVerified',
+        'role',
+        'collegeId'
+      ];
+    }
+
+    function hasProtectedFieldChanges() {
+      return request.resource.data
+        .diff(resource.data)
+        .affectedKeys()
+        .hasAny(protectedUserFields());
+    }
+
+    // ============================================================
+    // Users
+    // ============================================================
+
+    match /users/{userId} {
+
+      // Authenticated users can read any user profile (needed for chat
+      // participant names, seller info, etc.).  Only the owner or an admin
+      // may write.
+      allow read: if isAuthenticated();
+
+      allow create: if isAuthenticated() &&
+        isOwner(userId) &&
+        isAKGECEmail(request.resource.data.email) &&
+        request.resource.data.collegeId == 'akgec' &&
+        request.resource.data.role == 'student' &&
+        request.resource.data.isVerified == false;
+
+      allow update: if isAuthenticated() &&
+        (isOwner(userId) || isAdmin()) &&
+        !hasProtectedFieldChanges();
+
+      allow delete: if isAdmin();
+    }
+
+    // ============================================================
+    // Colleges
+    // ============================================================
+
+    match /colleges/{collegeId} {
+
+      allow read: if isAuthenticated();
+
+      allow write: if isAdmin();
+    }
+
+    // ============================================================
+    // Products
+    // ============================================================
+
+    match /products/{productId} {
+
+      // Public read for ACTIVE products (allows browsing without login).
+      // Authenticated users can also read their own listings in any state
+      // (RESERVED/SOLD/REMOVED) — required by My Listings, Edit Listing and
+      // re-opening one's own closed listing.
+      allow read: if resource.data.status == 'ACTIVE' ||
+        (isAuthenticated() && resource.data.sellerId == request.auth.uid);
+
+      // Verified students can create their own products. Initial counters
+      // and status are pinned so they cannot be spoofed at creation time.
+      allow create: if isAuthenticated() &&
+        isVerifiedStudent() &&
+        request.resource.data.sellerId == request.auth.uid &&
+        request.resource.data.status == 'ACTIVE' &&
+        request.resource.data.views == 0 &&
+        request.resource.data.favoritesCount == 0;
+
+      // Sellers/admins can update products.
+      //
+      // Sellers CANNOT:
+      // - change sellerId
+      // - change views
+      // - change favoritesCount
+      //
+      // Admins can modify everything.
+      //
+      // Any authenticated user may bump ONLY the view counter, and only by
+      // exactly +1 (client uses FieldValue.increment(1)). Every other field
+      // is protected from this path.
+      allow update: if isAuthenticated() &&
+        (
+          isAdmin() ||
+          isViewsOnlyIncrement() ||
+          (
+            isOwner(resource.data.sellerId) &&
+            request.resource.data.sellerId == resource.data.sellerId &&
+            !request.resource.data.diff(resource.data)
+              .affectedKeys()
+              .hasAny([
+                'views',
+                'favoritesCount'
+              ])
+          )
+        );
+
+      // Sellers/admins can delete products.
+      allow delete: if isAuthenticated() &&
+        (
+          isOwner(resource.data.sellerId) ||
+          isAdmin()
+        );
+    }
+
+    // ============================================================
+    // Chats
+    // ============================================================
+
+    match /chats/{chatId} {
+
+      allow read: if isAuthenticated() &&
+        (
+          request.auth.uid == resource.data.buyerId ||
+          request.auth.uid == resource.data.sellerId
+        );
+
+      allow create: if isAuthenticated() &&
+        request.resource.data.buyerId == request.auth.uid &&
+        request.resource.data.buyerId != request.resource.data.sellerId;
+
+      // Participants may ONLY touch the message-preview fields.
+      // Ownership fields (buyerId/sellerId) are immutable for clients.
+      allow update: if isAuthenticated() &&
+        (
+          request.auth.uid == resource.data.buyerId ||
+          request.auth.uid == resource.data.sellerId
+        ) &&
+        request.resource.data.diff(resource.data)
+          .affectedKeys()
+          .hasOnly([
+            'lastMessage',
+            'lastMessageAt'
+          ]);
+    }
+
+    // ============================================================
+    // Messages
+    //
+    // Top-level collection (matches the Flutter app architecture).
+    // Membership is derived from the referenced chat document, never
+    // from client-supplied participant data.
+    // ============================================================
+
+    match /messages/{messageId} {
+
+      allow read: if isAuthenticated() &&
+        (
+          request.auth.uid ==
+            get(
+              /databases/$(database)/documents/chats/$(resource.data.chatId)
+            ).data.buyerId ||
+          request.auth.uid ==
+            get(
+              /databases/$(database)/documents/chats/$(resource.data.chatId)
+            ).data.sellerId
+        );
+
+      allow create: if isAuthenticated() &&
+        exists(
+          /databases/$(database)/documents/chats/$(request.resource.data.chatId)
+        ) &&
+        (
+          request.auth.uid ==
+            get(
+              /databases/$(database)/documents/chats/$(request.resource.data.chatId)
+            ).data.buyerId ||
+          request.auth.uid ==
+            get(
+              /databases/$(database)/documents/chats/$(request.resource.data.chatId)
+            ).data.sellerId
+        ) &&
+        request.resource.data.senderId == request.auth.uid;
+
+      allow update: if false;
+
+      allow delete: if false;
+    }
+
+    // ============================================================
+    // Favorites
+    // ============================================================
+
+    match /favorites/{favoriteId} {
+
+      allow read: if isAuthenticated() &&
+        isOwner(resource.data.userId);
+
+      allow create: if isAuthenticated() &&
+        request.resource.data.userId == request.auth.uid &&
+        !exists(
+          /databases/$(database)/documents/favorites/
+          $(request.auth.uid + '_' + request.resource.data.productId)
+        );
+
+      // Idempotent re-favorite: the client may re-set ONLY its own document,
+      // and only the timestamp may effectively change.
+      allow update: if isAuthenticated() &&
+        resource.data.userId == request.auth.uid &&
+        request.resource.data.diff(resource.data)
+          .affectedKeys()
+          .hasOnly(['createdAt']);
+
+      allow delete: if isAuthenticated() &&
+        isOwner(resource.data.userId);
+    }
+
+    // ============================================================
+    // View records (Spark-compatible view counting)
+    //
+    // Deterministic per-user-per-product documents ({userId}_{productId});
+    // one user can never produce more than one record per product.
+    // No client may write products/{id}.views — this collection is the
+    // ledger. Reads are not required by any app flow today, so they stay
+    // denied.
+    // ============================================================
+
+    match /views/{viewId} {
+
+      allow create: if isAuthenticated() &&
+        request.resource.data.userId == request.auth.uid &&
+        request.resource.data.productId is string &&
+        request.resource.data.productId.size() > 0;
+
+      // Re-opening a product rewrites the same document for the same user;
+      // permit that only for the owner and only when nothing but the
+      // timestamp changes (userId/productId are immutable here).
+      allow update: if isAuthenticated() &&
+        resource.data.userId == request.auth.uid &&
+        request.resource.data.diff(resource.data)
+          .affectedKeys()
+          .hasOnly(['createdAt']);
+    }
+
+    // ============================================================
+    // Reports
+    // ============================================================
+
+    match /reports/{reportId} {
+
+      allow read: if isAuthenticated() &&
+        (
+          isOwner(resource.data.reportedBy) ||
+          isAdmin()
+        );
+
+      allow create: if isAuthenticated() &&
+        request.resource.data.reportedBy == request.auth.uid;
+
+      allow update: if isAdmin();
+
+      allow delete: if isAdmin();
+    }
+
+    // ============================================================
+    // Notifications
+    // ============================================================
+
+    match /notifications/{notificationId} {
+
+      // Only the recipient can read their own notifications.
+      allow read: if isAuthenticated() &&
+        isOwner(resource.data.recipientId);
+
+      // Authenticated chat participants can create notifications for the OTHER participant.
+      // - senderId must equal request.auth.uid
+      // - recipientId must be the other participant in the referenced chat
+      // - notification must correspond to an allowed chat/message context
+      allow create: if isAuthenticated() &&
+        request.resource.data.senderId == request.auth.uid &&
+        exists(/databases/$(database)/documents/chats/$(request.resource.data.chatId)) &&
+        (
+          request.auth.uid ==
+            get(/databases/$(database)/documents/chats/$(request.resource.data.chatId)).data.buyerId ||
+          request.auth.uid ==
+            get(/databases/$(database)/documents/chats/$(request.resource.data.chatId)).data.sellerId
+        ) &&
+        (
+          request.resource.data.recipientId ==
+            get(/databases/$(database)/documents/chats/$(request.resource.data.chatId)).data.buyerId ||
+          request.resource.data.recipientId ==
+            get(/databases/$(database)/documents/chats/$(request.resource.data.chatId)).data.sellerId
+        ) &&
+        request.resource.data.recipientId != request.auth.uid &&
+        request.resource.data.type == 'chat_message';
+
+      // Only recipient can mark their own notification as read.
+      // Only isRead field may change; all other fields are immutable for the recipient.
+      allow update: if isAuthenticated() &&
+        isOwner(resource.data.recipientId) &&
+        request.resource.data.diff(resource.data)
+          .affectedKeys()
+          .hasOnly(['isRead']);
+
+      // Only recipient can delete their own notification (if needed).
+      allow delete: if isAuthenticated() &&
+        isOwner(resource.data.recipientId);
+    }
+
+    // ============================================================
+    // Reviews
+    // ============================================================
+
+    match /reviews/{reviewId} {
+
+      allow read: if isAuthenticated();
+
+      allow create: if isAuthenticated() &&
+        request.resource.data.reviewerId == request.auth.uid &&
+        request.resource.data.reviewerId != request.resource.data.revieweeId;
+
+      allow update: if isAuthenticated() &&
+        isOwner(resource.data.reviewerId);
+
+      allow delete: if isAuthenticated() &&
+        (
+          isOwner(resource.data.reviewerId) ||
+          isAdmin()
+        );
+    }
+  }
+}

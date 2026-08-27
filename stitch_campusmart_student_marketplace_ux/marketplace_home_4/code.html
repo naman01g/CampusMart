@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusMart - Marketplace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#c8c6c5",
+                        "tertiary-container": "#00261a",
+                        "secondary": "#8b5000",
+                        "surface-tint": "#5f5e5e",
+                        "surface": "#fbf9f9",
+                        "surface-container-highest": "#e3e2e2",
+                        "surface-container-low": "#f5f3f3",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "surface-container": "#efeded",
+                        "on-tertiary-container": "#5b937b",
+                        "on-error": "#ffffff",
+                        "tertiary": "#000b06",
+                        "on-tertiary-fixed": "#002115",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#444748",
+                        "outline": "#747878",
+                        "outline-variant": "#deddd8",
+                        "surface-variant": "#e3e2e2",
+                        "on-primary-container": "#898787",
+                        "secondary-container": "#e38f2d",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-primary-fixed-variant": "#474746",
+                        "secondary-fixed": "#ffdcbe",
+                        "on-secondary-container": "#6d3e00",
+                        "on-tertiary-fixed-variant": "#16503c",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#303031",
+                        "background": "#f6f4ef",
+                        "on-primary-fixed": "#1b1c1c",
+                        "surface-container-lowest": "#fffefa",
+                        "primary-fixed": "#e5e2e1",
+                        "surface-bright": "#fbf9f9",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#2c1600",
+                        "on-background": "#1b1c1c",
+                        "secondary-fixed-dim": "#ffb870",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#b5efd4",
+                        "tertiary-fixed-dim": "#99d3b8",
+                        "on-secondary-fixed-variant": "#693c00",
+                        "surface-dim": "#dbdad9",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e9e8e7",
+                        "primary": "#080808",
+                        "primary-container": "#202020",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "container-max": "1280px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "xl": "48px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "gutter": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk", "sans-serif"],
+                        "headline-lg": ["Hanken Grotesk", "sans-serif"],
+                        "title-lg": ["Hanken Grotesk", "sans-serif"],
+                        "label-price": ["Hanken Grotesk", "sans-serif"],
+                        "body-md": ["Hanken Grotesk", "sans-serif"],
+                        "label-sm": ["Hanken Grotesk", "sans-serif"],
+                        "body-lg": ["Hanken Grotesk", "sans-serif"],
+                        "display-lg": ["Hanken Grotesk", "sans-serif"],
+                        "headline-md": ["Hanken Grotesk", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-price": ["18px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased pt-16 pb-20">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-background dark:bg-background border-b border-outline-variant dark:border-outline flat no-shadows">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A close-up portrait of a university student with a bright, approachable expression, set against a clean, softly lit library background in a modern light-mode aesthetic, utilizing deep charcoal blacks and crisp whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuV5_E9xjURK3OO1VCZPvOeTf1q3t2Xq7NbTFL3X2VBbvbVae2v7tvPdQoy0gW6C1AqbufBxwmch_de0yKUt9uM-EW5Skn4YrZ01Uw4Ry9etwvGKOoeUmUPluT6fLnf261uEkHgamsxME4Ny8N7H-spuj1BdhNSD4GBt0rN_x6BaoI3BsKCTheMOwyU3bIlSbPQeRhzHRgz7gIWYAxU2cA3wMUoNySxbGuXhkW0fGWr8NOHoG8OJY"/>
+</div>
+</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile text-primary dark:text-primary-fixed tracking-tight">
+            CampusMart
+        </div>
+<div class="flex items-center text-primary dark:text-primary-fixed hover:text-primary dark:hover:text-primary-fixed transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</div>
+</header>
+<main class="px-md py-lg space-y-xl max-w-container-max mx-auto">
+<!-- Featured Section -->
+<section class="space-y-sm">
+<h2 class="font-title-lg text-title-lg text-primary tracking-tight">Fresh on Campus</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden group hover:border-primary-container transition-colors cursor-pointer">
+<div class="aspect-video w-full bg-surface-container relative overflow-hidden border-b border-outline-variant">
+<img alt="Casio FX-991EX ClassWiz" class="w-full h-full object-cover" data-alt="A pristine Casio FX-991EX ClassWiz scientific calculator resting on a clean, modern wooden study desk. Soft, high-key natural light spills across the surface, highlighting the sharp details of the device. The background is a slightly out-of-focus bright library interior with charcoal and cream accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_TnAIDDK_truRTPfRy1nR5jf4suauuF8jGFVmow5k3szNvvky8wLjq1_PDUNvRl6asMya21hJlsmVWUtzBd4exCo4-pos6zEQgxoQc27NOXgQtKRlvsnuu5LobbaPqJTTH2OI4kihpeuWDiSM3bb1mVO1Stv54Qvruu7YVRMJV0XEhbSB79Z7CNI_JaAhmlYc2EfJyxcifuiE2IA86gh8NKgMnCTcEpeZy3YF_aGTK2cSBEiLwok"/>
+<div class="absolute top-sm right-sm bg-background border border-outline-variant rounded-lg px-2 py-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="location_on">location_on</span>
+<span class="font-label-sm text-label-sm text-primary">North Campus Library</span>
+</div>
+</div>
+<div class="p-md space-y-sm">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-title-lg text-title-lg text-primary leading-tight">Casio FX-991EX ClassWiz</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Like New • Scientific Calculator</p>
+</div>
+<span class="font-label-price text-label-price text-primary">₹850</span>
+</div>
+<div class="flex gap-2 pt-2">
+<button class="flex-1 bg-primary-container text-on-primary font-label-sm text-label-sm py-2 rounded-lg hover:opacity-90 transition-opacity">Contact Seller</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Feed Section -->
+<section class="space-y-md">
+<div class="flex justify-between items-end">
+<h2 class="font-title-lg text-title-lg text-primary tracking-tight">Marketplace Feed</h2>
+<button class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+                    Filter <span class="material-symbols-outlined text-[16px]" data-icon="tune">tune</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-sm space-y-2 group hover:border-primary-container transition-colors cursor-pointer flex flex-col">
+<div class="aspect-square w-full bg-surface-container rounded border border-outline-variant overflow-hidden relative">
+<img alt="Engineering Books" class="w-full h-full object-cover" data-alt="A stack of thick engineering textbooks with clean white pages and dark covers, neatly arranged on a minimalist white table. The lighting is crisp and bright, embodying a studious, modern scholastic vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXxVtzsqWjiV6R6rDXAekZqLb97y3pBtseughGdbMCZ4pya2lDz5GP3BEStGD7oNOUZ8X7BDFL7mPP4dJaSAqLq4V7q7GjcF01Wd5ryGRmaJHuTilJrqkWfbRMN_0y9RsWPSCOzn-rDldpzGbdj9rVAxeVl9aCe4DjhkMJU4c3m2H_aXy0g8Qh_NLmeJtX1NxVW746yC3xOAnlJ4VoJVkNtKVSC5yRFKkrevDUtqeOHKea8cAMLDw"/>
+<div class="absolute bottom-xs left-xs bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-1.5 py-0.5 rounded uppercase tracking-wider">
+                            Sell
+                        </div>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h4 class="font-body-md text-body-md text-primary leading-tight line-clamp-2">Engineering Books (1st Year)</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1 flex items-center gap-0.5"><span class="material-symbols-outlined text-[12px]" data-icon="location_on">location_on</span> Hostel Block B</p>
+</div>
+<div class="font-label-price text-label-price text-primary mt-2">₹1,200</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-sm space-y-2 group hover:border-primary-container transition-colors cursor-pointer flex flex-col">
+<div class="aspect-square w-full bg-surface-container rounded border border-outline-variant overflow-hidden relative">
+<img alt="Adjustable Laptop Stand" class="w-full h-full object-cover" data-alt="A sleek, modern adjustable aluminum laptop stand placed on a clean cream-colored surface. The object is sharply focused under bright, diffused studio lighting, conveying utility and durability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8GabFe_G_WlrH_6rzjOJXwCT9Yp-38Lbs-6f4vfq_WmjOOw9azJotdXZRDpr7RD3gR7-NRsjCC_YF2JCUIshSGYQ2MhqJtTtfm0iRMa0y-AdZlINu9zphbfxmlQBUUOUwqi7dYkCAsqhHJ3PVm5Ts8oiEbWxm0Zx6Tc5-z2GpP3QdlGe6LvlVw1Vlp_dFNGCgux7lvwYASgtZ4PQWdVbin9dFj8BtyeMQ7nikyOH9kx_wtBSUixo"/>
+<div class="absolute bottom-xs left-xs bg-background border border-outline-variant text-primary font-label-sm text-label-sm px-1.5 py-0.5 rounded uppercase tracking-wider">
+                            Free
+                        </div>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h4 class="font-body-md text-body-md text-primary leading-tight line-clamp-2">Adjustable Laptop Stand</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1 flex items-center gap-0.5"><span class="material-symbols-outlined text-[12px]" data-icon="location_on">location_on</span> Library Cafe</p>
+</div>
+<div class="font-label-price text-label-price text-primary mt-2">₹0</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-sm space-y-2 group hover:border-primary-container transition-colors cursor-pointer flex flex-col">
+<div class="aspect-square w-full bg-surface-container rounded border border-outline-variant overflow-hidden relative">
+<img alt="LED Desk Lamp" class="w-full h-full object-cover" data-alt="A minimalist LED desk lamp with a matte charcoal finish, switched on and casting a warm pool of light over a clean white desk. The background is subtle and bright, emphasizing the modern design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLgDlCfC8RO_aA6uLzQ-B6dXfntaj4pC2XbECDYhKLEMY6g5k6DcBmZB48MYhOdqI8fnkM-G9leraZELjqrxkJhKSZk6H0TfIr_IatDzL8RrJ4rAKTSbQPoTy5yQIAoGYRgBuVgUqtnR7QCncXT9hKMT6jKmC0ahZYw1gMQsY2mGax4KGQUG-ULSOiFkJyrPpIpVk2tkHY2JTOqKUEC_hsMgPerjotmZvoXY77MWq7aXpeiynFA9Q"/>
+<div class="absolute bottom-xs left-xs bg-surface-container-highest border border-outline-variant text-primary font-label-sm text-label-sm px-1.5 py-0.5 rounded uppercase tracking-wider">
+                            Exchange
+                        </div>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h4 class="font-body-md text-body-md text-primary leading-tight line-clamp-2">LED Desk Lamp</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1 flex items-center gap-0.5"><span class="material-symbols-outlined text-[12px]" data-icon="location_on">location_on</span> North Campus</p>
+</div>
+<div class="font-label-price text-label-price text-primary mt-2">Trade</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-sm space-y-2 group hover:border-primary-container transition-colors cursor-pointer flex flex-col">
+<div class="aspect-square w-full bg-surface-container rounded border border-outline-variant overflow-hidden relative">
+<img alt="Hostel Chair &amp; Table" class="w-full h-full object-cover" data-alt="A utilitarian hostel chair and study table set made of durable materials in charcoal and light wood tones. They sit in an empty, brightly lit dorm room with white walls, capturing a functional scholastic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCMSxeRp1aJsY4-QdZWBHP1_vwSu1InCdJoFnEzaTp-STs2Wdvi5Q_lVHr9rQS6PXklXowUfER69idqA-I2JGDMRJ9wkhbiCtbFXWMtXGwnbZH6HgzvIP-a3w-j4LmpykkblBKtENkLLitMT7iFOPa4BPDHcx_tUFOYpWtWJMJaugi48K3hGudYWt4Qal8p_UGvzxu1CdxOGFUJPU8vKexFYpP_krPj7islBMYG2mR-gJv6Mcb1v4"/>
+<div class="absolute bottom-xs left-xs bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-1.5 py-0.5 rounded uppercase tracking-wider">
+                            Sell
+                        </div>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h4 class="font-body-md text-body-md text-primary leading-tight line-clamp-2">Hostel Chair &amp; Table</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1 flex items-center gap-0.5"><span class="material-symbols-outlined text-[12px]" data-icon="location_on">location_on</span> Hostel Block C</p>
+</div>
+<div class="font-label-price text-label-price text-primary mt-2">₹450</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center bg-surface-container-lowest dark:bg-surface-container-lowest pb-[calc(env(safe-area-inset-bottom)+0.5rem)] h-16 border-t border-outline-variant dark:border-outline flat no-shadows md:hidden">
+<!-- HOME (Active) -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed border-t-2 border-secondary dark:border-secondary-fixed pt-1 flex-1 hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-label-sm">HOME</span>
+</a>
+<!-- SEARCH -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant pt-1 flex-1 border-t-2 border-transparent hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm">SEARCH</span>
+</a>
+<!-- SELL (Highlighted/Action) -->
+<a class="flex flex-col items-center justify-center text-on-secondary-container pt-1 flex-1 border-t-2 border-transparent hover:bg-surface-container-low transition-all relative" href="#">
+<div class="absolute top-0 w-full h-full bg-secondary-container opacity-20 -z-10"></div>
+<span class="material-symbols-outlined mb-1" data-icon="add_box">add_box</span>
+<span class="font-label-sm text-label-sm font-bold">SELL</span>
+</a>
+<!-- CHATS -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant pt-1 flex-1 border-t-2 border-transparent hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="chat">chat</span>
+<span class="font-label-sm text-label-sm">CHATS</span>
+</a>
+<!-- ME -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant pt-1 flex-1 border-t-2 border-transparent hover:bg-surface-container-low transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">ME</span>
+</a>
+</nav>
+</body></html>

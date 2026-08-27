@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- CampusMart brand color (ochre) for notifications -->
+    <color name="notification_color">#CC8B26</color>
+</resources>

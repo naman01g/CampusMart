@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chat - CampusMart</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#c8c6c5",
+                        "tertiary-container": "#00261a",
+                        "secondary": "#8b5000",
+                        "surface-tint": "#5f5e5e",
+                        "surface": "#fffefa",
+                        "surface-container-highest": "#e3e2e2",
+                        "surface-container-low": "#f5f3f3",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "surface-container": "#efeded",
+                        "on-tertiary-container": "#5b937b",
+                        "on-error": "#ffffff",
+                        "tertiary": "#000b06",
+                        "on-tertiary-fixed": "#002115",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#444748",
+                        "outline": "#747878",
+                        "outline-variant": "#deddd8",
+                        "surface-variant": "#e3e2e2",
+                        "on-primary-container": "#898787",
+                        "secondary-container": "#fea542",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-primary-fixed-variant": "#474746",
+                        "secondary-fixed": "#ffdcbe",
+                        "on-secondary-container": "#6d3e00",
+                        "on-tertiary-fixed-variant": "#16503c",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#303031",
+                        "background": "#f6f4ef",
+                        "on-primary-fixed": "#1b1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#e5e2e1",
+                        "surface-bright": "#fffefa",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#2c1600",
+                        "on-background": "#1b1c1c",
+                        "secondary-fixed-dim": "#ffb870",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#b5efd4",
+                        "tertiary-fixed-dim": "#99d3b8",
+                        "on-secondary-fixed-variant": "#693c00",
+                        "surface-dim": "#dbdad9",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e9e8e7",
+                        "primary": "#080808",
+                        "primary-container": "#202020",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "container-max": "1280px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "xl": "48px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "gutter": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "title-lg": ["Hanken Grotesk"],
+                        "label-price": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-price": ["18px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background h-screen flex flex-col antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-background border-b border-outline-variant">
+<div class="flex items-center gap-sm">
+<button class="p-2 -ml-2 text-primary hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant flex-shrink-0">
+<img alt="Arjun" class="w-full h-full object-cover" data-alt="A close-up portrait of a male university student in a bright outdoor campus setting. He has a friendly expression and is wearing a casual, solid-colored t-shirt. The lighting is natural and soft, typical of a sunny afternoon. The background is slightly blurred but clearly a modern university courtyard. The aesthetic is clean and contemporary." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuasUYI9Gkp45nsIpoEUQCL2fyK5tCylu9N3CtfEmd9C_KderSOBFy4pbaWMka_q0ptGWFOntZSlof3G366q09gOVBMBxqEwAYoTku3t2hhXnAj1wkNdg0eDKQAGDsePCnLy07amPYJxXRAg0VUobd67bCEzUYL_Esi55YVG4jqkW2jvtXy5drfRKxcJ1hlZNqqAzBrZEXbD7SL0ec2vQPKvPP9lkz_BDZxoeuLyWFoFSg1h2rBiw"/>
+</div>
+<div class="flex flex-col">
+<span class="font-title-lg text-title-lg text-primary leading-tight">Arjun</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-[#10B981]"></span> Online
+                    </span>
+</div>
+</div>
+</div>
+<button class="p-2 text-primary hover:bg-surface-container-low rounded-lg transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</header>
+<!-- Product Context Banner -->
+<div class="fixed top-16 w-full z-40 bg-surface border-b border-outline-variant p-md flex items-start gap-md shadow-sm">
+<div class="w-16 h-16 rounded-lg border border-outline-variant overflow-hidden flex-shrink-0 bg-white">
+<img alt="Casio FX-991EX ClassWiz" class="w-full h-full object-cover" data-alt="A clear, well-lit top-down photo of a Casio FX-991EX ClassWiz scientific calculator resting on a clean, light wood desk surface. The calculator is mostly black with a white top edge and solar panel. The display shows a simple calculation. The aesthetic is highly functional, neat, and organized, characteristic of a student's workspace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6lbZHlVxyvxCkq0N4nqmwV41DTVzfB8v-qeYvFGS-HeWry4ppFoQBEIS1ivQmsLDVg6XcXUZ2AV6A-ONl243IVvSy7YPuOSUMthD4fTxAHsmpg8gj3MyYPz9nNjj8aPmtBo1thryw5P-GjhamV3gxWmnTtZhI8RXCfCOXBRTGSmJIcqKuo2EXjzzXRY0gghEjn0FClHtlfSXqfhmeiaTjNrSblz4ESFAMwjG2SuFGXyhb8IvG4pc"/>
+</div>
+<div class="flex flex-col flex-grow">
+<h2 class="font-body-lg text-body-lg text-primary font-semibold line-clamp-1">Casio FX-991EX ClassWiz</h2>
+<span class="font-label-price text-label-price text-primary mt-1">₹850</span>
+<span class="inline-flex items-center px-2 py-0.5 mt-2 rounded bg-[#E8F5E9] text-[#2E7D32] font-label-sm text-label-sm w-fit border border-[#C8E6C9]">
+                Available
+            </span>
+</div>
+<button class="text-secondary font-label-sm text-label-sm uppercase hover:underline">Details</button>
+</div>
+<!-- Chat Canvas -->
+<main class="flex-grow pt-[144px] pb-[120px] px-md overflow-y-auto flex flex-col gap-md">
+<!-- Date Divider -->
+<div class="flex justify-center my-2">
+<span class="bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm px-3 py-1 rounded-full border border-outline-variant">
+                Today
+            </span>
+</div>
+<!-- Message from Seller -->
+<div class="flex flex-col gap-1 items-start max-w-[85%]">
+<div class="bg-surface border border-outline-variant p-3 rounded-lg rounded-tl-none">
+<p class="font-body-md text-body-md text-on-surface">Hi! Yes, the calculator is still available. It's in great condition, barely used for one semester.</p>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-1">10:42 AM</span>
+</div>
+<!-- Message from Buyer -->
+<div class="flex flex-col gap-1 items-end self-end max-w-[85%]">
+<div class="bg-primary-container text-on-primary p-3 rounded-lg rounded-tr-none">
+<p class="font-body-md text-body-md">Great! I'm interested. Is the price negotiable?</p>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mr-1">10:45 AM</span>
+</div>
+<!-- Message from Seller -->
+<div class="flex flex-col gap-1 items-start max-w-[85%]">
+<div class="bg-surface border border-outline-variant p-3 rounded-lg rounded-tl-none">
+<p class="font-body-md text-body-md text-on-surface">I can do ₹800, but that's my lowest.</p>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant ml-1">10:48 AM</span>
+</div>
+</main>
+<!-- Bottom Input Area -->
+<div class="fixed bottom-0 w-full bg-surface border-t border-outline-variant pb-safe z-50">
+<!-- Quick Actions -->
+<div class="flex gap-2 overflow-x-auto hide-scrollbar px-md py-3 bg-surface-container-lowest">
+<button class="whitespace-nowrap px-4 py-2 rounded border border-outline-variant bg-surface text-primary font-label-sm text-label-sm hover:border-primary-container transition-colors focus:ring-1 focus:ring-primary-container focus:outline-none">
+                Is this available?
+            </button>
+<button class="whitespace-nowrap px-4 py-2 rounded border border-outline-variant bg-surface text-primary font-label-sm text-label-sm hover:border-primary-container transition-colors focus:ring-1 focus:ring-primary-container focus:outline-none">
+                Negotiable?
+            </button>
+<button class="whitespace-nowrap px-4 py-2 rounded border border-outline-variant bg-surface text-primary font-label-sm text-label-sm hover:border-primary-container transition-colors focus:ring-1 focus:ring-primary-container focus:outline-none">
+                Meetup location?
+            </button>
+</div>
+<!-- Input Field -->
+<div class="flex items-end gap-sm px-md py-3 pb-md">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors flex-shrink-0 mb-1">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<div class="flex-grow bg-surface border border-outline-variant rounded-lg p-2 focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container transition-all">
+<textarea class="w-full bg-transparent border-none focus:ring-0 resize-none font-body-md text-body-md text-on-surface p-1 min-h-[24px] max-h-[120px]" oninput="this.style.height = ''; this.style.height = this.scrollHeight + 'px'" placeholder="Type a message..." rows="1" style="outline: none;"></textarea>
+</div>
+<button class="bg-[#E38F2D] hover:bg-[#c97b1e] text-white p-3 rounded-lg flex-shrink-0 transition-colors flex items-center justify-center mb-0.5">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</body></html>

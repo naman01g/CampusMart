@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "846171075121",
+    "project_id": "campusart",
+    "storage_bucket": "campusart.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846171075121:android:4975e7d47bf2714359db10",
+        "android_client_info": {
+          "package_name": "com.campusmart.campusmart_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApJzg_ULvJ5xjQGv7Na0skRU2y5abp27s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Exchange Proposal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#c8c6c5",
+                        "tertiary-container": "#00261a",
+                        "secondary": "#e38f2d",
+                        "surface-tint": "#5f5e5e",
+                        "surface": "#fffefa",
+                        "surface-container-highest": "#e3e2e2",
+                        "surface-container-low": "#f5f3f3",
+                        "primary-fixed-dim": "#c8c6c5",
+                        "surface-container": "#efeded",
+                        "on-tertiary-container": "#5b937b",
+                        "on-error": "#ffffff",
+                        "tertiary": "#000b06",
+                        "on-tertiary-fixed": "#002115",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#1b1c1c",
+                        "on-surface-variant": "#444748",
+                        "outline": "#747878",
+                        "outline-variant": "#deddd8",
+                        "surface-variant": "#e3e2e2",
+                        "on-primary-container": "#898787",
+                        "secondary-container": "#fea542",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-primary-fixed-variant": "#474746",
+                        "secondary-fixed": "#ffdcbe",
+                        "on-secondary-container": "#6d3e00",
+                        "on-tertiary-fixed-variant": "#16503c",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#303031",
+                        "background": "#f6f4ef",
+                        "on-primary-fixed": "#1b1c1c",
+                        "surface-container-lowest": "#fffefa",
+                        "primary-fixed": "#e5e2e1",
+                        "surface-bright": "#fffefa",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#2c1600",
+                        "on-background": "#1b1c1c",
+                        "secondary-fixed-dim": "#ffb870",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#b5efd4",
+                        "tertiary-fixed-dim": "#99d3b8",
+                        "on-secondary-fixed-variant": "#693c00",
+                        "surface-dim": "#dbdad9",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e9e8e7",
+                        "primary": "#080808",
+                        "primary-container": "#202020",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "container-max": "1280px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "xl": "48px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "gutter": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "title-lg": ["Hanken Grotesk"],
+                        "label-price": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "title-lg": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-price": ["18px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background h-full flex flex-col antialiased">
+<!-- Top Navigation (Sub-page, so structural only, back button provided) -->
+<header class="fixed top-0 w-full z-50 flex items-center px-md h-16 bg-surface border-b border-outline-variant">
+<button class="p-2 -ml-2 rounded-lg hover:bg-surface-variant transition-colors flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="ml-2 font-title-lg text-title-lg text-primary tracking-tight">Propose Exchange</h1>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-16 pb-32 px-md py-lg flex flex-col gap-xl max-w-container-max mx-auto w-full md:px-gutter">
+<!-- You Want Section -->
+<section class="flex flex-col gap-sm">
+<h2 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">You Want</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex gap-md items-center">
+<div class="w-20 h-20 bg-surface-variant rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A clean, brightly lit photograph of an Engineering Mechanics textbook lying flat on a pristine white desk. The book cover is technical and modern, featuring geometric diagrams. Soft, diffused lighting creates a professional, academic atmosphere. The overall palette is neutral with high contrast, aligning with a modern corporate functional scholastic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE0uMGBIcxsZUUTqdWWsmEUFqR3c6qtFykJZrzFqFfJjBgz6zS0JHLaSqAh1PYd4lk3Nwt9dR2Ff2MUZoV07Kc7sPQAIvv8L-9-drsRAaRMYbrmU83caVv3bO3TpJEucGXxS1RHk77kMUG_5qOOt1nj6AxE_-YCY4s-FCjkqfnoYDDNrqPNHgPFWUNGeGKnIv1ZNL1dOxIRF5lsoRmdzpuh_lcJPL81DWYrLbmhRZSZdfXLEIZXi4"/>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-title-lg text-title-lg text-primary leading-tight">Engineering Mechanics: Statics</span>
+<span class="font-body-md text-body-md text-on-surface-variant">by R.C. Hibbeler (14th Ed)</span>
+<div class="flex gap-2 mt-1">
+<span class="bg-background border border-outline-variant px-2 py-0.5 rounded-lg font-label-sm text-label-sm text-primary">Textbooks</span>
+<span class="bg-background border border-outline-variant px-2 py-0.5 rounded-lg font-label-sm text-label-sm text-primary">Good Cond.</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Swap Icon Separator -->
+<div class="flex justify-center -my-lg relative z-10">
+<div class="bg-surface border border-outline-variant rounded-full p-2 text-primary shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">swap_vert</span>
+</div>
+</div>
+<!-- You Offer Section -->
+<section class="flex flex-col gap-sm">
+<div class="flex justify-between items-end">
+<h2 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">You Offer (Select items)</h2>
+<span class="font-label-sm text-label-sm text-secondary font-medium">1 Selected</span>
+</div>
+<div class="flex flex-col gap-sm">
+<!-- Selected Item -->
+<div class="bg-surface-container-lowest border-2 border-secondary rounded-lg p-md flex gap-md items-center relative cursor-pointer group transition-colors hover:bg-surface-container-low">
+<div class="absolute top-md right-md text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="w-16 h-16 bg-surface-variant rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A top-down view of a classic 'Introduction to Algorithms' (DSA) textbook by Cormen on a light wooden table. The lighting is crisp and natural, highlighting the texture of the book cover. The setting feels academic, organized, and reliable, suitable for a university exchange platform interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDL8QH5Y3Qbr4OLs2AMAMLIM6HYRAqGsDFv23V5HcqDqFTQ3lydysldQgwsb2E_0lRLKWJRrZVchuZHSW0i91y7_dcqTv54GXRoxqi4_rf_8bGdB-RDH2pxSU3eXUYQek2lwpS-Ap9g0dhWoZlxFkdI8b3pDh2O06S_DU46I913bOw0NbjaePIrMK-ei8JyzUiYFy6hHrOPSHd7F2A7VTbnC9gqpKmKcjqqfHASaEyWhZNH43sYNNU"/>
+</div>
+<div class="flex flex-col gap-xs pr-8">
+<span class="font-title-lg text-title-lg text-primary leading-tight">Intro to Algorithms (DSA)</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Cormen et al. (3rd Ed)</span>
+</div>
+</div>
+<!-- Unselected Item 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex gap-md items-center cursor-pointer group transition-colors hover:border-primary-container">
+<div class="w-16 h-16 bg-surface-variant rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A high-quality, close-up photograph of a scientific calculator resting on scattered graph paper. The image is bright and cleanly composed, with soft shadows indicating a professional studio setup. The color palette emphasizes stark whites, dark charcoal greys, and subtle cream tones, reflecting a structured, scholastic design aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTH7aJuv2_bWGhOphj1eYbJCDYSP_EF9rF5vZgEwtwG_XbdoakwXs2Q-Kz7rX7bqaZODl0WGkH8af0hHmAgwogQygI961jrPH_O6ghbi_RzUaSpPUaVMo0EzEiVnFjDYI-whl5jZftfGQvNC-asuf-1V5HphIbpxNMXwlwgMNbxUS_oK8vBrB4ientNifvZUY9WlBABLmYtN8TJhizHBJKmpfWuyjtnQH7U5ZeikZWsZqyvb93ofQ"/>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-title-lg text-title-lg text-primary leading-tight">Casio FX-991EX Calculator</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Hardly used, with cover</span>
+</div>
+</div>
+<!-- Unselected Item 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex gap-md items-center cursor-pointer group transition-colors hover:border-primary-container">
+<div class="w-16 h-16 bg-surface-variant rounded-lg flex items-center justify-center shrink-0 border border-dashed border-outline">
+<span class="material-symbols-outlined text-outline">add_photo_alternate</span>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-title-lg text-title-lg text-primary leading-tight">Drafting Table Lamp</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Adjustable arm, LED</span>
+</div>
+</div>
+</div>
+<button class="mt-2 flex items-center justify-center gap-2 py-3 rounded-lg border border-outline-variant text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container-low transition-colors w-full bg-background">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>ADD NEW LISTING TO OFFER</span>
+</button>
+</section>
+<!-- Optional Cash Add-on (Bento style detail) -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex justify-between items-center mt-sm">
+<div class="flex flex-col">
+<span class="font-title-lg text-title-lg text-primary">Add Cash to Offer?</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Balance uneven value</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-price text-label-price text-primary">$0</span>
+<button class="w-8 h-8 rounded-lg bg-surface-variant flex items-center justify-center text-primary hover:bg-outline-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar (Transactional Context - No Nav Shell) -->
+<div class="fixed bottom-0 w-full bg-surface border-t border-outline-variant p-md pb-safe flex gap-md items-center shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] z-50">
+<button class="flex-1 py-4 bg-primary-container text-on-primary rounded-lg font-title-lg text-title-lg transition-colors hover:opacity-90 active:scale-[0.98]">
+            Propose Exchange
+        </button>
+</div>
+</body></html>

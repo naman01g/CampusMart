@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CampusMart - Sell Flow Step 1</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#c8c6c5",
+                      "tertiary-container": "#00261a",
+                      "secondary": "#8b5000",
+                      "surface-tint": "#5f5e5e",
+                      "surface": "#FFFEFA",
+                      "surface-container-highest": "#e3e2e2",
+                      "surface-container-low": "#f5f3f3",
+                      "primary-fixed-dim": "#c8c6c5",
+                      "surface-container": "#efeded",
+                      "on-tertiary-container": "#5b937b",
+                      "on-error": "#ffffff",
+                      "tertiary": "#000b06",
+                      "on-tertiary-fixed": "#002115",
+                      "on-primary": "#ffffff",
+                      "on-surface": "#1b1c1c",
+                      "on-surface-variant": "#444748",
+                      "outline": "#DEDDD8",
+                      "outline-variant": "#DEDDD8",
+                      "surface-variant": "#e3e2e2",
+                      "on-primary-container": "#898787",
+                      "secondary-container": "#fea542",
+                      "inverse-on-surface": "#f2f0f0",
+                      "on-primary-fixed-variant": "#474746",
+                      "secondary-fixed": "#ffdcbe",
+                      "on-secondary-container": "#6d3e00",
+                      "on-tertiary-fixed-variant": "#16503c",
+                      "on-secondary": "#ffffff",
+                      "inverse-surface": "#303031",
+                      "background": "#F6F4EF",
+                      "on-primary-fixed": "#1b1c1c",
+                      "surface-container-lowest": "#FFFEFA",
+                      "primary-fixed": "#e5e2e1",
+                      "surface-bright": "#FFFEFA",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-fixed": "#2c1600",
+                      "on-background": "#1b1c1c",
+                      "secondary-fixed-dim": "#ffb870",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed": "#b5efd4",
+                      "tertiary-fixed-dim": "#99d3b8",
+                      "on-secondary-fixed-variant": "#693c00",
+                      "surface-dim": "#dbdad9",
+                      "error-container": "#ffdad6",
+                      "surface-container-high": "#e9e8e7",
+                      "primary": "#080808",
+                      "primary-container": "#202020",
+                      "error": "#ba1a1a",
+                      "ochre": "#E38F2D"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.25rem",
+                      "xl": "0.25rem",
+                      "full": "0.25rem"
+              },
+              "spacing": {
+                      "base": "4px",
+                      "container-max": "1280px",
+                      "md": "16px",
+                      "xs": "4px",
+                      "xl": "48px",
+                      "lg": "24px",
+                      "sm": "8px",
+                      "gutter": "20px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "title-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-price": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-sm": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "title-lg": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-price": [
+                              "18px",
+                              {
+                                      "lineHeight": "18px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { background-color: #F6F4EF; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="h-full font-body-md text-on-background antialiased flex flex-col md:hidden">
+<!-- Top App Bar (Transactional / Linear flow context - modified for flow) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-background border-b border-outline-variant">
+<button aria-label="Cancel listing" class="text-primary p-2 -ml-2">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+<span class="font-title-lg text-title-lg text-primary tracking-tight">Create Listing</span>
+<div class="w-10"></div> <!-- Spacer for balance -->
+</header>
+<main class="flex-grow pt-16 pb-24 px-4 flex flex-col">
+<!-- Progress Indicator -->
+<div class="flex items-center gap-2 my-md">
+<div class="h-1 flex-1 bg-ochre rounded-full"></div>
+<div class="h-1 flex-1 bg-surface-container-highest rounded-full"></div>
+<div class="h-1 flex-1 bg-surface-container-highest rounded-full"></div>
+<div class="h-1 flex-1 bg-surface-container-highest rounded-full"></div>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mt-sm mb-lg">Show students what you're listing</h1>
+<!-- Photo Upload Section -->
+<div class="mb-xl">
+<div class="flex justify-between items-end mb-sm">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Photos</label>
+<span class="font-body-md text-body-md text-on-surface-variant">1/10</span>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<!-- Uploaded Photo (Realistic Placeholder) -->
+<div class="aspect-square relative rounded border border-outline-variant overflow-hidden group">
+<img class="w-full h-full object-cover" data-alt="A brightly lit, top-down photograph of a college biology textbook resting on a clean, light wood desk. The lighting is natural and even, highlighting the cover details. The aesthetic is clean, modern, and trustworthy, suitable for a university marketplace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8JisMJ2aHAZqy9diwULFTQjv5hIOYyN1GcJ4aEt7RtzG7uoG3lIABveJR2lhsSSgqARH0kbgpTqiPFb87_NwJJK1QMGzfOUcIvr0ZeoTVdjk1Mx5QvQhutOaLUgmol0B_8Hl7s0QWWCqhyVZsEGGYPL17FvtburZWclEIp2-mCJr_eCKua8Nb9wMjCbJMRgpd-AfK-MDQTQ9QYSqUlftmZA8BU_fSqxSrgLf-Ld2D2INGxIq7Gxc"/>
+<button class="absolute top-2 right-2 bg-surface-container-lowest/80 rounded p-1 shadow-sm opacity-90">
+<span class="material-symbols-outlined text-on-surface text-sm">close</span>
+</button>
+</div>
+<!-- Upload Area -->
+<button class="aspect-square rounded border border-dashed border-outline bg-surface flex flex-col items-center justify-center text-on-surface-variant hover:border-primary hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-3xl mb-1">add_photo_alternate</span>
+<span class="font-label-sm text-label-sm">Add Photo</span>
+</button>
+</div>
+</div>
+<!-- Details Section -->
+<div class="flex flex-col gap-lg">
+<!-- Title Input -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase" for="listing-title">Listing Title</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded p-sm font-body-lg text-body-lg text-on-surface placeholder:text-outline focus:outline-none focus:border-primary transition-colors" id="listing-title" placeholder="What are you selling?" type="text"/>
+</div>
+<!-- Category Select -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase" for="listing-category">Category</label>
+<div class="relative">
+<select class="w-full appearance-none bg-surface-container-lowest border border-outline-variant rounded p-sm font-body-lg text-body-lg text-on-surface focus:outline-none focus:border-primary transition-colors" id="listing-category">
+<option disabled="" selected="" value="">Select a category</option>
+<option value="textbooks">Textbooks &amp; Notes</option>
+<option value="electronics">Electronics</option>
+<option value="furniture">Dorm Furniture</option>
+<option value="clothing">Clothing</option>
+</select>
+<span class="material-symbols-outlined absolute right-sm top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Condition Chips -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Condition</label>
+<div class="flex flex-wrap gap-sm">
+<button class="px-3 py-1.5 border border-outline-variant rounded bg-surface-container-lowest font-body-md text-body-md text-on-surface hover:border-primary transition-colors focus:outline-none focus:ring-1 focus:ring-primary">New</button>
+<button class="px-3 py-1.5 border border-primary rounded bg-primary-container font-body-md text-body-md text-on-primary focus:outline-none">Like New</button>
+<button class="px-3 py-1.5 border border-outline-variant rounded bg-surface-container-lowest font-body-md text-body-md text-on-surface hover:border-primary transition-colors focus:outline-none focus:ring-1 focus:ring-primary">Good</button>
+<button class="px-3 py-1.5 border border-outline-variant rounded bg-surface-container-lowest font-body-md text-body-md text-on-surface hover:border-primary transition-colors focus:outline-none focus:ring-1 focus:ring-primary">Fair</button>
+</div>
+</div>
+<!-- Description -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase" for="listing-desc">Description</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded p-sm font-body-md text-body-md text-on-surface placeholder:text-outline focus:outline-none focus:border-primary transition-colors resize-none" id="listing-desc" placeholder="Describe the item, flaws, reasons for selling..." rows="4"></textarea>
+</div>
+</div>
+</main>
+<!-- Fixed Bottom Action Bar -->
+<div class="fixed bottom-0 w-full bg-surface-container-lowest border-t border-outline-variant p-4 pb-safe flex justify-end z-50 shadow-[0_-4px_16px_rgba(0,0,0,0.02)]">
+<button class="w-full py-3 bg-[#E38F2D] text-on-primary font-title-lg text-title-lg rounded border border-[#E38F2D] active:opacity-80 transition-opacity flex items-center justify-center gap-2">
+            Next Step
+            <span class="material-symbols-outlined text-sm font-bold">arrow_forward</span>
+</button>
+</div>
+</body></html>
