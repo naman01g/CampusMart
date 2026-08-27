@@ -3,20 +3,16 @@ class AppConfig {
   static const String collegeEmailDomain = 'akgec.ac.in';
   static const String collegeName = 'Ajay Kumar Garg Engineering College';
 
-  /// Official endpoint that publishes app-update metadata (JSON).
+  /// GitHub repository that publishes CampusMart releases.
   ///
-  /// The response must be a JSON object of the form:
-  /// {
-  ///   "latestVersion": "1.1.0",   // display version
-  ///   "latestBuild": 2,           // versionCode / build number
-  ///   "apkUrl": "https://.../app.apk",
-  ///   "releaseNotes": "What changed in this release"
-  /// }
+  /// The update source is the public GitHub Releases API for this repository:
+  ///   https://api.github.com/repos/{githubOwner}/{githubRepo}/releases/latest
   ///
-  /// Only this configured official endpoint is trusted. The update client
-  /// refuses any URL that is not HTTPS or is not under this host.
-  static const String updateEndpoint = 'https://campusmart.app/versions.json';
-
-  /// Host allowed to serve update metadata and the APK itself.
-  static const String updateAllowedHost = 'campusmart.app';
+  /// For production users to reach the update metadata and APK, this repository
+  /// MUST be PUBLIC (or exposed via a public proxy). A private repository
+  /// returns 404 for the latest-release API and asset downloads without
+  /// authentication, so a key/token would be required - which is intentionally
+  /// NOT embedded in the app.
+  static const String githubOwner = 'naman01g';
+  static const String githubRepo = 'CampusMart';
 }
